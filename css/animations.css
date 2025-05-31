@@ -1,0 +1,273 @@
+/* ===========================================
+   LoveTap 产品广告网页 - 动画效果样式文件
+   =========================================== */
+
+/* 全局动画配置 */
+:root {
+    --animation-speed-fast: 0.2s;
+    --animation-speed-normal: 0.3s;
+    --animation-speed-slow: 0.5s;
+    --animation-easing: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* 页面加载动画 */
+@keyframes pageLoad {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.main-content {
+    animation: pageLoad 0.8s var(--animation-easing) forwards;
+}
+
+/* 淡入动画 */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 缩放动画 */
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* 应用信息卡片动画 */
+.app-info-card {
+    animation: scaleIn 0.8s var(--animation-easing) 0.3s both;
+}
+
+/* 主要按钮动画 */
+@keyframes buttonPulse {
+    0% {
+        box-shadow: 0 6px 20px rgba(106, 126, 240, 0.4);
+    }
+    50% {
+        box-shadow: 0 8px 25px rgba(106, 126, 240, 0.6);
+    }
+    100% {
+        box-shadow: 0 6px 20px rgba(106, 126, 240, 0.4);
+    }
+}
+
+.primary-btn {
+    animation: fadeInUp 0.8s var(--animation-easing) 1s both;
+}
+
+/* 按钮点击波纹效果 */
+@keyframes ripple {
+    0% {
+        transform: scale(0);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
+.primary-btn {
+    position: relative;
+    overflow: hidden;
+}
+
+.primary-btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.primary-btn:active::before {
+    width: 300px;
+    height: 300px;
+}
+
+/* 截图悬停效果 */
+.screenshot-item {
+    transition: transform var(--animation-speed-normal) var(--animation-easing),
+                box-shadow var(--animation-speed-normal) var(--animation-easing);
+}
+
+.screenshot-item:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* 功能特色卡片动画 */
+.feature-item {
+    transition: transform var(--animation-speed-normal) var(--animation-easing),
+                box-shadow var(--animation-speed-normal) var(--animation-easing);
+}
+
+.feature-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.15);
+}
+
+/* 功能图标旋转动画 */
+@keyframes iconRotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.feature-icon:hover .feature-icon-img {
+    animation: iconRotate 0.8s var(--animation-easing);
+}
+
+/* 用户评价卡片动画 */
+.review-item {
+    transition: transform var(--animation-speed-normal) var(--animation-easing);
+}
+
+.review-item:hover {
+    transform: translateX(8px);
+}
+
+/* 星星评分动画 */
+@keyframes starTwinkle {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+}
+
+.star {
+    transition: transform var(--animation-speed-fast) var(--animation-easing);
+}
+
+.review-item:hover .star {
+    animation: starTwinkle 0.5s var(--animation-easing);
+}
+
+.review-item:hover .star:nth-child(1) { animation-delay: 0s; }
+.review-item:hover .star:nth-child(2) { animation-delay: 0.1s; }
+.review-item:hover .star:nth-child(3) { animation-delay: 0.2s; }
+.review-item:hover .star:nth-child(4) { animation-delay: 0.3s; }
+.review-item:hover .star:nth-child(5) { animation-delay: 0.4s; }
+
+/* 展开折叠动画 */
+.description-more {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s var(--animation-easing),
+                opacity 0.3s var(--animation-easing) 0.2s;
+}
+
+.description-more.show {
+    max-height: 200px;
+    opacity: 1;
+}
+
+/* 移动端菜单动画 */
+.nav-menu {
+    transition: left var(--animation-speed-normal) var(--animation-easing);
+}
+
+.nav-toggle span {
+    transition: all var(--animation-speed-normal) var(--animation-easing);
+}
+
+/* 加载器动画 */
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.loader {
+    width: 40px;
+    height: 40px;
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #6A7EF0;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 20px auto;
+}
+
+/* 响应式动画优化 */
+@media (max-width: 767px) {
+    /* 在移动设备上减少动画强度 */
+    .app-info-card {
+        animation-duration: 0.6s;
+    }
+    
+    .screenshot-item:hover {
+        transform: translateY(-4px) scale(1.01);
+    }
+    
+    .feature-item:hover {
+        transform: translateY(-4px);
+    }
+}
+
+/* 高性能动画优化 */
+.gpu-accelerated {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+}
+
+/* 动画暂停类 */
+.animation-paused {
+    animation-play-state: paused;
+}
+
+/* 无障碍支持 - 减少动画 */
+@media (prefers-reduced-motion: reduce) {
+    .screenshot-item:hover,
+    .feature-item:hover,
+    .review-item:hover {
+        transform: none;
+    }
+    
+    .primary-btn:hover {
+        animation: none;
+    }
+    
+    .feature-icon:hover .feature-icon-img {
+        animation: none;
+    }
+} 

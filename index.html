@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <!-- 基础元数据配置 -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="LoveTap - 人气免费键盘APP，6000万下载突破！可爱、便捷的颜文字·绘文字丰富，创作原创键盘主题">
+    <meta name="keywords" content="LoveTap,键盘,输入法,颜文字,绘文字,自定义键盘">
+    <meta name="author" content="Ray One.">
+    
+    <!-- 社交媒体分享配置 -->
+    <meta property="og:title" content="LoveTap - 个性化键盘APP">
+    <meta property="og:description" content="人气免费键盘「LoveTap」6000万下载突破！">
+    <meta property="og:image" content="assets/meta-image.jpg">
+    <meta property="og:type" content="website">
+    
+    <!-- 页面标题和图标 -->
+    <title>LoveTap - 个性化键盘APP下载</title>
+    <link rel="icon" href="assets/images/logo/lovetap-logo.png" type="image/png">
+    
+    <!-- 样式文件引入 -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/animations.css">
+    
+    <!-- 字体预加载优化 -->
+    <link rel="preload" href="assets/fonts/NotoSansCJK/NotoSansCJK-Regular.woff2" as="font" type="font/woff2" crossorigin>
+</head>
+<body>
+    <!-- 页面头部导航 -->
+    <header class="header">
+        <nav class="nav-container">
+            <div class="nav-brand">
+                <img src="assets/images/logo/lovetap-icon.svg" alt="LoveTap Logo" class="nav-logo">
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#features">功能特色</a></li>
+                <li><a href="#screenshots">应用截图</a></li>
+                <li><a href="#reviews">用户评价</a></li>
+            </ul>
+            <button class="nav-toggle" aria-label="打开菜单">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <!-- 主要内容区域 -->
+    <main class="main-content">
+        <!-- Hero区域 - 产品介绍 -->
+        <section class="hero-section">
+            <div class="container">
+                <!-- 应用信息卡片 -->
+                <div class="app-info-card">
+                    <div class="app-info-left">
+                        <h1 class="app-title">LoveTap</h1>
+                        <p class="app-developer">Ray One.</p>
+                        <div class="app-meta">
+                            <span class="app-category">Utilities</span>
+                            <span class="app-rating">4+</span>
+                            <span class="app-size">161.74 MB</span>
+                        </div>
+                    </div>
+                    <div class="app-info-right">
+                        <div class="app-icon">
+                            <img src="assets/images/logo/lovetap-logo.png" alt="LoveTap App Icon" class="app-icon-img">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 主要操作按钮 -->
+                <div class="primary-action">
+                    <button class="download-btn primary-btn" onclick="downloadApp()">
+                        立即下载
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 应用简介区域 -->
+        <section class="intro-section" id="screenshots">
+            <div class="container">
+                <h2 class="section-title">简介</h2>
+                
+                <!-- 应用截图展示区域 -->
+                <div class="screenshots-gallery">
+                    <div class="screenshots-container">
+                        <div class="screenshot-item">
+                            <img src="assets/images/screenshots/screenshot-1.png" alt="可爱键盘主题" class="screenshot-img" loading="lazy">
+                        </div>
+                        <div class="screenshot-item">
+                            <img src="assets/images/screenshots/screenshot-2.png" alt="丰富表情符号" class="screenshot-img" loading="lazy">
+                        </div>
+                        <div class="screenshot-item">
+                            <img src="assets/images/screenshots/screenshot-3.png" alt="自定义背景" class="screenshot-img" loading="lazy">
+                        </div>
+                        <div class="screenshot-item">
+                            <img src="assets/images/screenshots/screenshot-4.png" alt="多彩键盘" class="screenshot-img" loading="lazy">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 应用描述文字 -->
+                <div class="app-description">
+                    <p class="description-text">
+                        人气的免费键盘「LoveTap」6000万下载突破！<br>
+                        可爱い、使える顔文字・绘文字が豊富。<br>
+                        写真や动画で「オリジナルキーボード」を作ろう。
+                        <span class="description-more" id="descriptionMore">
+                            <br><br>
+                            ■ 主要功能特色：<br>
+                            • 1500+ SNS话题表情包<br>
+                            • 20万+ 有趣颜文字<br>
+                            • 自定义键盘主题<br>
+                            • 智能输入联想<br>
+                            • 多语言输入支持<br>
+                            • 云端同步功能
+                        </span>
+                    </p>
+                    <button class="expand-btn" onclick="toggleDescription()">...展开</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 功能特色区域 -->
+        <section class="features-section" id="features">
+            <div class="container">
+                <h2 class="section-title">功能特色</h2>
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <img src="assets/images/icons/star.svg" alt="表情符号" class="feature-icon-img">
+                        </div>
+                        <h3 class="feature-title">丰富表情符号</h3>
+                        <p class="feature-description">超过20万个有趣颜文字和1500+热门表情包，让聊天更生动有趣</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <img src="assets/images/icons/download.svg" alt="自定义主题" class="feature-icon-img">
+                        </div>
+                        <h3 class="feature-title">个性化主题</h3>
+                        <p class="feature-description">使用照片和视频制作专属键盘主题，展现独特个性</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <img src="assets/images/icons/arrow.svg" alt="智能输入" class="feature-icon-img">
+                        </div>
+                        <h3 class="feature-title">智能输入</h3>
+                        <p class="feature-description">先进的输入联想技术，提高打字效率和准确性</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 用户评价区域 -->
+        <section class="reviews-section" id="reviews">
+            <div class="container">
+                <h2 class="section-title">用户评价</h2>
+                <div class="reviews-grid">
+                    <div class="review-item">
+                        <div class="review-rating">
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                        </div>
+                        <p class="review-text">"超级可爱的键盘！表情符号特别丰富，每天聊天都很开心～"</p>
+                        <p class="review-author">- 用户评价</p>
+                    </div>
+                    <div class="review-item">
+                        <div class="review-rating">
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                        </div>
+                        <p class="review-text">"自定义功能太赞了！可以用自己的照片做键盘背景"</p>
+                        <p class="review-author">- 用户评价</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页面脚部 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="assets/images/logo/lovetap-icon.svg" alt="LoveTap Logo" class="footer-logo">
+                    <p class="footer-description">让输入更有趣，让表达更精彩</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4 class="footer-title">产品</h4>
+                        <ul class="footer-list">
+                            <li><a href="#features">功能特色</a></li>
+                            <li><a href="#screenshots">应用截图</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4 class="footer-title">支持</h4>
+                        <ul class="footer-list">
+                            <li><a href="#">用户帮助</a></li>
+                            <li><a href="#">联系我们</a></li>
+                            <li><a href="#">反馈建议</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="footer-copyright">© 2024 Ray One. 保留所有权利</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript文件引入 -->
+    <script src="js/main.js"></script>
+    <script src="js/lazy-loading.js"></script>
+</body>
+</html> 

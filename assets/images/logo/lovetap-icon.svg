@@ -1,0 +1,12 @@
+<!-- LoveTap品牌Logo占位符 -->
+<svg width="200" height="60" viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg">
+    <!-- Logo背景 -->
+    <rect x="0" y="0" width="200" height="60" fill="transparent"/>
+    
+    <!-- LoveTap文字Logo -->
+    <text x="100" y="40" text-anchor="middle" font-family="Arial, sans-serif" font-size="28" font-weight="bold" fill="#6A7EF0">LoveTap</text>
+    
+    <!-- 装饰性元素 -->
+    <circle cx="20" cy="30" r="4" fill="#6A7EF0" opacity="0.6"/>
+    <circle cx="180" cy="30" r="4" fill="#6A7EF0" opacity="0.6"/>
+</svg> 
