@@ -16,10 +16,6 @@
     .section-title {
         font-size: 2.5rem;
     }
-    
-    .feature-title {
-        font-size: 1.8rem;
-    }
 }
 
 /* 标准桌面设备 (992px - 1199px) */
@@ -35,8 +31,7 @@
     
     /* 减小应用图标大小 */
     .app-icon {
-        width: 100px;
-        height: 100px;
+        height: 100%;
     }
 }
 
@@ -47,23 +42,30 @@
         padding: 0 15px;
     }
     
-    /* 调整头部导航 */
-    .nav-container {
-        padding: 12px 15px;
-    }
-    
-    .nav-menu {
-        gap: 15px;
-    }
-    
-    /* 调整Hero区域 */
+    /* 调整Hero区域 - 保持app-info在同一行 */
     .hero-section {
         padding: 30px 0;
     }
     
     .app-info-card {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
         padding: 25px;
         margin-bottom: 25px;
+        gap: 20px;
+    }
+    
+    .app-info-left,
+    .app-info-right {
+        height: 100%; /* 自动填满父容器高度 */
+        display: flex; /* 启用flex布局 */
+        flex-direction: column; /* 纵向排列内容 */
+        justify-content: center; /* 垂直居中内容 */
+    }
+    
+    .app-icon {
+        height: 100%; /* 修改为100%以匹配容器高度 */
     }
     
     .app-title {
@@ -74,35 +76,99 @@
         font-size: 1rem;
     }
     
-    /* 调整截图展示区域 */
+    /* 调整截图展示区域 - 横向滚动 */
+    .screenshots-gallery {
+        overflow: hidden;
+    }
+    
+    .screenshots-container {
+        display: flex;
+        gap: 15px;
+        overflow-x: auto;
+        overflow-y: hidden;
+        padding: 15px 0;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+    }
+    
     .screenshot-item {
-        width: 180px;
-        height: 320px;
+        flex: 0 0 160px; /* 增加移动端宽度 */
+        height: auto;
+        scroll-snap-align: start;
     }
     
-    /* 调整功能特色网格 */
-    .features-grid {
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 30px;
+    .screenshot-img {
+        width: 100%;
+        height: auto; 
+        aspect-ratio: 9/16; /* 手机屏幕比例 */
+        object-fit: cover;
+        border-radius: var(--border-radius);
+        box-shadow: var(--shadow-medium);
     }
     
-    .feature-item {
-        padding: 30px 25px;
+    /* 隐藏滚动条 */
+    .screenshots-container::-webkit-scrollbar {
+        display: none;
     }
     
-    /* 调整用户评价网格 */
+    .screenshots-container {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+    
+    /* 调整用户评价网格 - 横向滚动 */
     .reviews-grid {
-        grid-template-columns: 1fr;
+        display: flex;
         gap: 25px;
+        overflow-x: auto;
+        overflow-y: hidden;
+        padding: 15px 0;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    .review-item {
+        flex: 0 0 350px;
+        scroll-snap-align: start;
+    }
+    
+    /* 隐藏用户评价滚动条 */
+    .reviews-grid::-webkit-scrollbar {
+        display: none;
+    }
+    
+    .reviews-grid {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
     }
     
     /* 调整页脚 */
+    .footer {
+        padding: 1rem 0; /* 减少移动端padding */
+        text-align: center; /* 确保移动端居中 */
+    }
+    
     .footer-content {
-        gap: 40px;
+        flex-direction: column; /* 移动端改为垂直布局 */
+        text-align: center;
+        gap: 0.8rem;
+    }
+    
+    .footer-copyright {
+        font-size: 0.75rem; /* 进一步减小字体 */
+        color: var(--text-secondary); /* 确保灰色 */
+        order: 2; /* 版权信息显示在下方 */
     }
     
     .footer-links {
-        gap: 30px;
+        gap: 1.2rem; /* 减少链接间距 */
+        justify-content: center;
+        order: 1; /* 链接显示在上方 */
+    }
+    
+    .footer-links a {
+        font-size: 0.75rem; /* 进一步减小字体 */
+        color: var(--text-secondary); /* 确保灰色 */
     }
 }
 
@@ -157,139 +223,197 @@
         transform: rotate(-45deg) translate(7px, -6px);
     }
     
-    /* 调整主要内容 */
     .main-content {
-        margin-top: 70px;
+        margin-top: 0;
     }
     
-    /* 调整Hero区域 */
+    /* 调整Hero区域 - 保持app-info-left和app-info-right在同一行 */
     .hero-section {
         padding: 20px 0;
     }
     
     .app-info-card {
-        flex-direction: column;
-        text-align: center;
-        padding: 20px;
+        /* 保持flex布局，不改为column */
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 15px;
+        margin-bottom: 15px;
+        gap: 15px;
     }
     
+    .app-info-left,
     .app-info-right {
-        margin-left: 0;
-        margin-top: 20px;
+        height: 100%; /* 自动填满父容器高度 */
+        display: flex; /* 启用flex布局 */
+        flex-direction: column; /* 纵向排列内容 */
+        justify-content: center; /* 垂直居中内容 */
     }
     
     .app-icon {
-        width: 80px;
-        height: 80px;
-        margin: 0 auto;
+        height: 100%; /* 修改为100%以匹配容器高度 */
     }
     
     .app-title {
-        font-size: 1.8rem;
+        font-size: 1.5rem;
+        margin-bottom: 0.25rem;
+    }
+    
+    .app-developer {
+        font-size: 0.9rem;
+        margin-bottom: 0.5rem;
     }
     
     .app-meta {
-        justify-content: center;
-        gap: 10px;
+        justify-content: flex-start;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin-bottom: 0.5rem;
     }
     
     .app-meta span {
-        font-size: 0.8rem;
-        padding: 4px 8px;
+        font-size: 0.75rem;
+        padding: 3px 6px;
     }
     
     /* 调整按钮 */
     .primary-btn {
-        font-size: 1.1rem;
-        padding: 15px 30px;
+        font-size: 1.2rem; /* 移动端字体大小 */
+        padding: 12px 24px;
+        min-width: 160px;
     }
     
     /* 调整区间标题 */
     .section-title {
-        font-size: 1.6rem;
-        margin-bottom: 30px;
+        font-size: 1.4rem;
+        margin-bottom: 0; /* 删除margin */
     }
     
     /* 调整简介区域 */
     .intro-section {
-        padding: 40px 0;
+        padding: 1rem 0; /* 减少padding */
     }
     
-    /* 调整截图展示 */
-    .screenshot-item {
-        width: 160px;
-        height: 280px;
+    /* 调整截图展示 - 横向滚动，自适应高度 */
+    .screenshots-gallery {
+        margin-bottom: 0; /* 删除margin */
+        overflow: hidden; /* 防止垂直滚动 */
     }
     
     .screenshots-container {
-        gap: 15px;
-        padding: 15px 0;
+        display: flex;
+        gap: 12px;
+        overflow-x: auto;
+        overflow-y: hidden; /* 禁止垂直滚动 */
+        padding: 10px 0;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch; /* iOS smooth scrolling */
+    }
+    
+    .screenshot-item {
+        flex: 0 0 160px; /* 增加移动端宽度 */
+        height: auto;
+        scroll-snap-align: start;
+    }
+    
+    .screenshot-img {
+        width: 100%;
+        height: auto; 
+        aspect-ratio: 9/16; /* 手机屏幕比例 */
+        object-fit: cover;
+        border-radius: var(--border-radius);
+        box-shadow: var(--shadow-medium);
+    }
+    
+    /* 隐藏滚动条但保持滚动功能 */
+    .screenshots-container::-webkit-scrollbar {
+        display: none;
+    }
+    
+    .screenshots-container {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
     }
     
     /* 调整应用描述 */
     .app-description {
-        padding: 20px;
+        padding-bottom: 15px; /* 只保留bottom padding */
+        max-width: 100%;
     }
     
     .description-text {
-        font-size: 1rem;
+        font-size: 0.95rem;
+        line-height: 1.6;
     }
     
-    /* 调整功能特色区域 */
-    .features-section {
-        padding: 60px 0;
-    }
-    
-    .features-grid {
-        grid-template-columns: 1fr;
-        gap: 25px;
-    }
-    
-    .feature-item {
-        padding: 25px 20px;
-    }
-    
-    .feature-icon {
-        width: 60px;
-        height: 60px;
-    }
-    
-    .feature-icon-img {
-        width: 30px;
-        height: 30px;
-    }
-    
-    .feature-title {
-        font-size: 1.3rem;
-    }
-    
-    /* 调整用户评价区域 */
+    /* 调整用户评价区域 - 横向滚动 */
     .reviews-section {
-        padding: 60px 0;
+        padding: 1rem 0; /* 改为1rem */
+    }
+    
+    .reviews-grid {
+        display: flex; /* 改为flex布局 */
+        gap: 15px;
+        overflow-x: auto;
+        overflow-y: hidden;
+        padding: 10px 0;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
     }
     
     .review-item {
-        padding: 25px;
+        flex: 0 0 280px; /* 固定宽度 */
+        padding: 20px;
+        scroll-snap-align: start;
     }
     
     .review-text {
         font-size: 1rem;
+        line-height: 1.5;
+        margin-bottom: 0.75rem;
+    }
+    
+    .review-author {
+        font-size: 0.85rem;
+    }
+    
+    /* 隐藏用户评价滚动条 */
+    .reviews-grid::-webkit-scrollbar {
+        display: none;
+    }
+    
+    .reviews-grid {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
     }
     
     /* 调整页脚 */
     .footer {
-        padding: 40px 0 20px;
+        padding: 1rem 0; /* 减少移动端padding */
+        text-align: center; /* 确保移动端居中 */
     }
     
     .footer-content {
-        grid-template-columns: 1fr;
-        gap: 30px;
+        flex-direction: column; /* 移动端改为垂直布局 */
         text-align: center;
+        gap: 0.8rem;
+    }
+    
+    .footer-copyright {
+        font-size: 0.75rem; /* 进一步减小字体 */
+        color: var(--text-secondary); /* 确保灰色 */
+        order: 2; /* 版权信息显示在下方 */
     }
     
     .footer-links {
-        grid-template-columns: 1fr;
-        gap: 20px;
+        gap: 1.2rem; /* 减少链接间距 */
+        justify-content: center;
+        order: 1; /* 链接显示在上方 */
+    }
+    
+    .footer-links a {
+        font-size: 0.75rem; /* 进一步减小字体 */
+        color: var(--text-secondary); /* 确保灰色 */
     }
 }
 
@@ -305,74 +429,111 @@
     }
     
     .app-info-card {
-        padding: 15px;
+        /* 保持flex布局，不改为column */
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 12px;
+        gap: 12px;
         border-radius: 15px;
     }
     
+    .app-info-left,
+    .app-info-right {
+        height: 100%; /* 自动填满父容器高度 */
+        display: flex; /* 启用flex布局 */
+        flex-direction: column; /* 纵向排列内容 */
+        justify-content: center; /* 垂直居中内容 */
+    }
+    
+    .app-icon {
+        height: 100%; /* 修改为100%以匹配容器高度 */
+    }
+    
     .app-title {
-        font-size: 1.5rem;
+        font-size: 1.3rem;
+        margin-bottom: 0.2rem;
     }
     
     .app-developer {
-        font-size: 0.9rem;
+        font-size: 0.8rem;
+        margin-bottom: 0.4rem;
+    }
+    
+    .app-meta {
+        gap: 6px;
+        margin-bottom: 0.5rem;
+    }
+    
+    .app-meta span {
+        font-size: 0.7rem;
+        padding: 2px 5px;
     }
     
     .section-title {
-        font-size: 1.4rem;
-        margin-bottom: 25px;
+        font-size: 1.2rem;
+        margin-bottom: 0; /* 删除margin */
     }
     
-    /* 调整截图尺寸 */
+    /* 调整截图尺寸 - 保持横向滚动 */
     .screenshot-item {
-        width: 140px;
-        height: 250px;
+        flex: 0 0 140px; /* 超小屏幕适中的宽度 */
     }
     
     .screenshots-container {
-        gap: 12px;
+        gap: 10px;
     }
     
-    /* 调整功能特色卡片 */
-    .feature-item {
-        padding: 20px 15px;
-    }
-    
-    .feature-icon {
-        width: 50px;
-        height: 50px;
-    }
-    
-    .feature-icon-img {
-        width: 25px;
-        height: 25px;
-    }
-    
-    .feature-title {
-        font-size: 1.2rem;
-    }
-    
-    .feature-description {
-        font-size: 0.9rem;
-    }
-    
-    /* 调整用户评价 */
+    /* 调整用户评价 - 保持横向滚动 */
     .review-item {
-        padding: 20px;
+        flex: 0 0 260px; /* 稍小的宽度 */
+        padding: 15px;
+    }
+    
+    .review-text {
+        font-size: 0.9rem;
+        line-height: 1.4;
+        margin-bottom: 0.6rem;
+    }
+    
+    .review-author {
+        font-size: 0.8rem;
     }
     
     /* 调整按钮尺寸 */
     .primary-btn {
-        font-size: 1rem;
-        padding: 12px 25px;
+        font-size: 1.1rem; /* 超小屏幕字体大小 */
+        padding: 10px 20px;
+        min-width: 140px;
     }
     
     /* 调整页脚 */
-    .footer-title {
-        font-size: 1.1rem;
+    .footer {
+        padding: 1rem 0; /* 减少移动端padding */
+        text-align: center; /* 确保移动端居中 */
     }
     
-    .footer-list a {
-        font-size: 0.9rem;
+    .footer-content {
+        flex-direction: column; /* 移动端改为垂直布局 */
+        text-align: center;
+        gap: 0.8rem;
+    }
+    
+    .footer-copyright {
+        font-size: 0.75rem; /* 进一步减小字体 */
+        color: var(--text-secondary); /* 确保灰色 */
+        order: 2; /* 版权信息显示在下方 */
+    }
+    
+    .footer-links {
+        gap: 1.2rem; /* 减少链接间距 */
+        justify-content: center;
+        order: 1; /* 链接显示在上方 */
+    }
+    
+    .footer-links a {
+        font-size: 0.75rem; /* 进一步减小字体 */
+        color: var(--text-secondary); /* 确保灰色 */
     }
 }
 
@@ -388,9 +549,8 @@
         padding: 20px 0;
     }
     
-    .features-section,
     .reviews-section {
-        padding: 50px 0;
+        padding: 1rem 0; /* 改为1rem */
     }
 }
 
@@ -398,8 +558,7 @@
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
     /* 确保图像在高分辨率屏幕上清晰显示 */
     .app-icon-img,
-    .screenshot-img,
-    .feature-icon-img {
+    .screenshot-img {
         image-rendering: -webkit-optimize-contrast;
         image-rendering: crisp-edges;
     }
@@ -441,9 +600,10 @@
         page-break-inside: avoid;
     }
     
-    .feature-item,
     .review-item {
         page-break-inside: avoid;
         break-inside: avoid;
     }
-} 
+}
+
+/* 头部导航相关响应式样式已整体删除 */ 

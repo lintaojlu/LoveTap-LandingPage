@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initButtonEffects();
     initDescriptionToggle();
     initLazyLoading();
+    initScreenshotLightbox();
 });
 
 /* ===========================================
@@ -229,4 +230,39 @@ function trackDownload() {
 window.addEventListener('error', function(e) {
     console.error('页面错误:', e.error);
     // 这里可以添加错误上报逻辑
-}); 
+});
+
+/* ===========================================
+   截图点击放大灯箱功能
+   =========================================== */
+function initScreenshotLightbox() {
+    // 获取所有截图图片
+    const screenshotImgs = document.querySelectorAll('.screenshot-img');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const lightboxClose = document.getElementById('lightboxClose');
+
+    screenshotImgs.forEach(img => {
+        img.addEventListener('click', function() {
+            lightboxImg.src = this.src;
+            lightbox.style.display = 'flex';
+            document.body.style.overflow = 'hidden'; // 禁止页面滚动
+        });
+    });
+
+    // 关闭按钮
+    lightboxClose.addEventListener('click', function() {
+        lightbox.style.display = 'none';
+        lightboxImg.src = '';
+        document.body.style.overflow = '';
+    });
+
+    // 点击遮罩关闭
+    lightbox.addEventListener('click', function(e) {
+        if (e.target === lightbox) {
+            lightbox.style.display = 'none';
+            lightboxImg.src = '';
+            document.body.style.overflow = '';
+        }
+    });
+} 

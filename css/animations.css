@@ -127,31 +127,6 @@
     box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
 }
 
-/* 功能特色卡片动画 */
-.feature-item {
-    transition: transform var(--animation-speed-normal) var(--animation-easing),
-                box-shadow var(--animation-speed-normal) var(--animation-easing);
-}
-
-.feature-item:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.15);
-}
-
-/* 功能图标旋转动画 */
-@keyframes iconRotate {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-.feature-icon:hover .feature-icon-img {
-    animation: iconRotate 0.8s var(--animation-easing);
-}
-
 /* 用户评价卡片动画 */
 .review-item {
     transition: transform var(--animation-speed-normal) var(--animation-easing);
@@ -198,15 +173,6 @@
     opacity: 1;
 }
 
-/* 移动端菜单动画 */
-.nav-menu {
-    transition: left var(--animation-speed-normal) var(--animation-easing);
-}
-
-.nav-toggle span {
-    transition: all var(--animation-speed-normal) var(--animation-easing);
-}
-
 /* 加载器动画 */
 @keyframes spin {
     0% {
@@ -237,10 +203,6 @@
     .screenshot-item:hover {
         transform: translateY(-4px) scale(1.01);
     }
-    
-    .feature-item:hover {
-        transform: translateY(-4px);
-    }
 }
 
 /* 高性能动画优化 */
@@ -258,7 +220,6 @@
 /* 无障碍支持 - 减少动画 */
 @media (prefers-reduced-motion: reduce) {
     .screenshot-item:hover,
-    .feature-item:hover,
     .review-item:hover {
         transform: none;
     }
@@ -266,8 +227,6 @@
     .primary-btn:hover {
         animation: none;
     }
-    
-    .feature-icon:hover .feature-icon-img {
-        animation: none;
-    }
-} 
+}
+
+/* 头部导航相关动画样式已整体删除 */ 
