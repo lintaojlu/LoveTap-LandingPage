@@ -163,30 +163,14 @@ function downloadApp() {
     
     // 显示加载状态
     button.classList.add('loading');
-    button.textContent = '正在跳转...';
+    button.textContent = 'ストアに移動中...'; 
     button.disabled = true;
     
-    // 模拟跳转到应用商店
+    // 统一跳转到指定的App Store链接
+    const downloadUrl = 'https://apps.apple.com/us/app/id6744844995';
+    
+    // 模拟跳转延时
     setTimeout(() => {
-        // 这里可以根据用户设备跳转到对应的应用商店
-        const userAgent = navigator.userAgent;
-        let downloadUrl = '#';
-        
-        if (/iPhone|iPad|iPod/.test(userAgent)) {
-            // iOS设备跳转到App Store
-            downloadUrl = 'https://apps.apple.com/app/lovetap/id472842800';
-        } else if (/Android/.test(userAgent)) {
-            // Android设备跳转到Google Play
-            downloadUrl = 'https://play.google.com/store/apps/details?id=com.adamrocker.android.lovetap';
-        } else {
-            // 其他设备显示提示
-            alert('请在移动设备上下载LoveTap应用');
-            button.classList.remove('loading');
-            button.textContent = originalText;
-            button.disabled = false;
-            return;
-        }
-        
         // 打开下载链接
         window.open(downloadUrl, '_blank');
         
