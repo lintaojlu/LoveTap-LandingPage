@@ -12,7 +12,7 @@ function getCurrentDate() {
 async function recordStat(type) {
     try {
         const date = getCurrentDate();
-        const response = await fetch(`/record-stat?type=${type}&date=${date}`, {
+        const response = await fetch(`http://localhost:3000/record-stat?type=${type}&date=${date}`, {
             method: 'POST'
         });
         if (!response.ok) {
