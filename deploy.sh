@@ -106,25 +106,27 @@ fi
 # 设置npm配置
 echo "⚙️ 配置npm..."
 npm config set registry https://registry.npmmirror.com
-npm config set disturl https://npmmirror.com/dist
-npm config set sass_binary_site https://npmmirror.com/mirrors/node-sass/
-npm config set dns-timeout 30000
-npm config set fetch-retries 5
-npm config set fetch-retry-mintimeout 20000
-npm config set fetch-retry-maxtimeout 120000
+npm config set network-timeout 60000
+npm config set fetch-retries 3
+npm config set fetch-retry-factor 2
+npm config set fetch-retry-mintimeout 10000
+npm config set fetch-retry-maxtimeout 60000
 
 # 安装依赖
 echo "📦 执行npm install..."
-npm install --production --no-fund --no-audit --prefer-offline || {
+npm install --omit=dev --no-fund --no-audit --prefer-offline || {
     echo "⚠️ 首次安装失败，尝试清除缓存后重新安装..."
     npm cache clean --force
-    npm install --production --no-fund --no-audit || handle_error "npm install 失败"
+    npm install --omit=dev --no-fund --no-audit
 }
 
 # 恢复默认配置
 npm config delete registry
-npm config delete disturl
-npm config delete sass_binary_site
+npm config delete network-timeout
+npm config delete fetch-retries
+npm config delete fetch-retry-factor
+npm config delete fetch-retry-mintimeout
+npm config delete fetch-retry-maxtimeout
 
 # 6. 检查并配置systemd服务
 echo "⚙️ 配置系统服务..."
