@@ -5,11 +5,13 @@ After=network.target
 [Service]
 Type=simple
 User=www-data
-WorkingDirectory=/var/www/lovetap
+WorkingDirectory=/root/desktop/website/LoveTap-LandingPage
 ExecStart=/usr/bin/node server.js
 Restart=on-failure
 Environment=PORT=3000
 Environment=NODE_ENV=production
+StandardOutput=journal
+StandardError=journal
 
 [Install]
-WantedBy=multi-user.target 
+WantedBy=multi-user.target
