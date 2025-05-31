@@ -2,8 +2,32 @@
    LoveTap 产品广告网页 - 主要JavaScript逻辑
    =========================================== */
 
+// 辅助函数：获取当前日期字符串（YYYY-MM-DD格式）
+function getCurrentDate() {
+    const now = new Date();
+    return now.toISOString().split('T')[0];
+}
+
+// 辅助函数：记录统计数据
+async function recordStat(type) {
+    try {
+        const date = getCurrentDate();
+        const response = await fetch(`/record-stat?type=${type}&date=${date}`, {
+            method: 'POST'
+        });
+        if (!response.ok) {
+            console.error('Failed to record stat:', await response.text());
+        }
+    } catch (error) {
+        console.error('Error recording stat:', error);
+    }
+}
+
 // 等待DOM加载完成
 document.addEventListener('DOMContentLoaded', function() {
+    // 记录访问统计
+    recordStat('visit');
+    
     // 初始化所有功能
     initNavigation();
     initButtonEffects();
@@ -169,6 +193,9 @@ function downloadApp() {
     // 统一跳转到指定的App Store链接
     const downloadUrl = 'https://apps.apple.com/us/app/id6744844995';
     
+    // 记录下载统计
+    recordStat('download');
+    
     // 模拟跳转延时
     setTimeout(() => {
         // 打开下载链接
@@ -178,9 +205,6 @@ function downloadApp() {
         button.classList.remove('loading');
         button.textContent = originalText;
         button.disabled = false;
-        
-        // 发送下载统计
-        trackDownload();
     }, 1000);
 }
 
